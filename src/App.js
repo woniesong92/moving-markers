@@ -1,5 +1,7 @@
 import React from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
+
+import Pin from "./Pin";
 import "./App.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -34,7 +36,11 @@ class App extends React.Component {
           mapboxApiAccessToken={MAPBOX_TOKEN}
           width="100%"
           height="100%"
-        />
+        >
+          <Marker key={`marker-1`} latitude={37.78} longitude={-122.41}>
+            <Pin size={20} />
+          </Marker>
+        </ReactMapGL>
       </div>
     );
   }
