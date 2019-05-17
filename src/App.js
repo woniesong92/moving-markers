@@ -1,8 +1,43 @@
 import React from "react";
+import ReactMapGL, { Marker } from "react-map-gl";
 import "./App.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-function App() {
-  return <div className="App">Hello World!</div>;
+// Dev Only Token
+const MAPBOX_TOKEN =
+  "pk.eyJ1Ijoid29uaWVzb25nOTIiLCJhIjoiY2p2cmt1Zmd0MnZvNTQwb2lsNmt0bjZvMCJ9.9plSZqfZivrZnFocBn_d8w";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      viewport: {
+        latitude: 37.7577,
+        longitude: -122.4376,
+        zoom: 8
+      }
+    };
+  }
+
+  onViewportChange = viewport => {
+    const { width, height, ...etc } = viewport;
+    this.setState({ viewport: etc });
+  };
+
+  render() {
+    return (
+      <div className="map-container">
+        <ReactMapGL
+          {...this.state.viewport}
+          onViewportChange={viewport => this.onViewportChange(viewport)}
+          mapboxApiAccessToken={MAPBOX_TOKEN}
+          width="100%"
+          height="100%"
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
