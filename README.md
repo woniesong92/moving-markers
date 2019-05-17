@@ -11,5 +11,5 @@ Simulate cars moving in random directions on a map
 ```
 $ git clone git@github.com:woniesong92/moving-markers.git
 $ cd moving-markers
-$ yarn start
+$ yarn && yarn start
 ```
